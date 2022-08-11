@@ -6,7 +6,7 @@ MAINTAINER  Peter Bui <pbui@nd.edu>
 RUN         apt-get update -y
 
 # Run-time dependencies
-RUN         apt-get install -y python3-tornado python3-requests python3-yaml python3-markdown2
+RUN         apt-get install -y python3-tornado python3-requests python3-yaml python3-markdown
 
 # Shell utilities
 RUN	    apt-get install -y curl bc netcat iproute2 zip unzip gawk
