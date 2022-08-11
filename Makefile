@@ -4,5 +4,5 @@ all:
 
 test:		
 	@[ "$(BRANCH)" = "master" -o "$(BRANCH)" = "" ] \
-	    || { [ -f "$(BRANCH)/Makefile" ] && (echo "Testing $(BRANCH)" && cd $(BRANCH) && make -s test) } \
+	    || { [ -f "$(BRANCH)/Makefile" ] && (cd $(BRANCH) && make -s test) } \
 	    || { (echo "$(BRANCH)" | grep -q project) && .scripts/check.py; }
