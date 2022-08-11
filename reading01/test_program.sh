@@ -2,8 +2,8 @@
 
 output() {
     cat <<EOF | base64 -d
-RmFsc2UKRmFsc2UKVHJ1ZQpUcnVlCkZhbHNlClRydWUKVHJ1ZQpGYWxzZQpUcnVlCkZhbHNlCkZ
-hbHNlClRydWUK
+RmFsc2UKRmFsc2UKVHJ1ZQpUcnVlCkZhbHNlClRydWUKVHJ1ZQpGYWxzZQpUcnVlCkZhbHNlCkZh
+bHNlCkZhbHNlCg==
 EOF
 }
 
