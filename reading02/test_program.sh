@@ -62,7 +62,7 @@ echo "Testing reading02 program..."
 
 
 printf " %-60s ... " "I/O System Calls"
-if ! grep_all "open read close" program.c; then
+if ! grep_all "open read close stat" program.c; then
     error "Failure"
 else
     echo "Success"
