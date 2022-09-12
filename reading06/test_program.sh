@@ -134,7 +134,7 @@ fi
 
 printf " %-60s ... " "program (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -160,7 +160,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -185,7 +185,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -211,7 +211,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -237,7 +237,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -eq 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -263,7 +263,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -289,7 +289,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
+if [ $? -eq 0 ] || [ $(grep -v ENOSYS $WORKSPACE/test | grep -c CLONE_THREAD) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
