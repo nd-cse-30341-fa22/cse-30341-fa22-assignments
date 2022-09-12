@@ -59,6 +59,7 @@ trap "cleanup 1" INT TERM
 
 echo "Testing reading06 program..."
 
+
 printf " %-60s ... " "I/O System Calls"
 if ! grep_all "open read close stat" program.c; then
     error "Failure"
@@ -133,7 +134,7 @@ fi
 
 printf " %-60s ... " "program (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -159,7 +160,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -184,7 +185,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -210,7 +211,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -236,7 +237,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -262,7 +263,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -ne 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
@@ -288,7 +289,7 @@ fi
 
 printf " %-60s ... " "program $ARGUMENTS (strace)"
 strace -e clone,clone3 ./program $ARGUMENTS &> $WORKSPACE/test
-if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test) -ne 2 ]; then
+if [ $? -eq 0 ] || [ $(grep -c CLONE_THREAD $WORKSPACE/test | grep -v ENOSYS) -ne 2 ]; then
     error "Failure"
 else
     echo "Success"
