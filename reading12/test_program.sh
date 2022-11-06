@@ -243,6 +243,24 @@ else
     echo "Success"
 fi
 
+ARGUMENTS="Makefile . asdf /bin/ls"
+printf " %-60s ... " "program $ARGUMENTS"
+diff -u <(find $ARGUMENTS 2> /dev/null | xargs $SHA1SUM 2> /dev/null | sort) <(./program $ARGUMENTS | sort) &> $WORKSPACE/test
+if [ $? -ne 0 ]; then
+    error "Failure"
+else
+    echo "Success"
+fi
+
+printf " %-60s ... " "program $ARGUMENTS (valgrind)"
+valgrind --leak-check=full ./program $ARGUMENTS &> $WORKSPACE/test
+if [ $? -eq 0 ] || [ $(awk '/ERROR SUMMARY:/ {print $4}' $WORKSPACE/test) -ne 0 ]; then
+    echo "Exit Status: $?" >> $WORKSPACE/test
+    error "Failure"
+else
+    echo "Success"
+fi
+
 ARGUMENTS=". .. /root"
 printf " %-60s ... " "program $ARGUMENTS"
 diff -u <(find $ARGUMENTS 2> /dev/null | xargs $SHA1SUM 2> /dev/null | sort) <(./program $ARGUMENTS | sort) &> $WORKSPACE/test
