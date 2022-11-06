@@ -46,7 +46,7 @@ mkdir $WORKSPACE
 trap "cleanup" EXIT
 trap "cleanup 1" INT TERM
 
-echo "Checking reading13 program..."
+echo "Testing reading13 program..."
 
 # disk2
 
